@@ -255,7 +255,9 @@ def get_yf_data(security, start_date, end_date):
         ticker_data = {}
         ticker = security["ticker"]
         escaped_ticker = escape_ticker(ticker)
+        print(escaped_ticker)
         df = yf.download(escaped_ticker, start=start_date, end=end_date, auto_adjust=True)
+        print(df)
         yahoo_response = df.to_dict()
         timestamps = list(yahoo_response["Open"].keys())
         timestamps = list(map(lambda timestamp: int(timestamp.timestamp()), timestamps))
