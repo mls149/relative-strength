@@ -22,4 +22,4 @@ SP600: true
 
 # Program behavior
 # Should the program wait for you to hit enter to exit?
-EXIT_WAIT_FOR_ENTER: true
+EXIT_WAIT_FOR_ENTER: false
