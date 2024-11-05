@@ -95,7 +95,7 @@ def get_resolved_securities():
 
 def get_tickers_from_wikipedia(tickers):
     if cfg("NQ100"):
-        tickers.update(get_securities('https://en.wikipedia.org/wiki/Nasdaq-100', ticker_pos=2, table_pos=4, universe="Nasdaq 100"))
+        tickers.update(get_securities('https://en.wikipedia.org/wiki/Nasdaq-100', ticker_pos=2, table_pos=1, universe="Nasdaq 100"))
     if cfg("SP500"):
         tickers.update(get_securities('http://en.wikipedia.org/wiki/List_of_S%26P_500_companies', sector_offset=3, universe="S&P 500"))
     if cfg("SP400"):
