@@ -28,7 +28,7 @@ jobs:
               python relative-strength.py true false ${{ secrets.API_KEY }}
           - name: push to log git
             run: |
-              git clone https://mls149:${{ secrets.RS_LOG_PASS }}@github.com/mls149/rs-log.git
+              git clone https://mls149:${{ secrets.PAT }}@github.com/mls149/rs-log.git
               rm ./rs-log/output/* && cp -a ./output/. ./rs-log/output
               cd rs-log
               git config user.name github-actions
