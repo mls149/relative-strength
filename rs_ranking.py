@@ -189,6 +189,7 @@ def rankings():
 def main(skipEnter = False):
     ranks = rankings()
     print(ranks[0])
+    ranks[0].to_csv(os.path.join(DIR, "output", f'rs_stocks2{suffix}.csv'), index = False)
     print("***\nYour 'rs_stocks.csv' is in the output folder.\n***")
     if not skipEnter and cfg("EXIT_WAIT_FOR_ENTER"):
         input("Press Enter key to exit...")
