@@ -257,10 +257,15 @@ def get_yf_data(security, start_date, end_date):
         escaped_ticker = escape_ticker(ticker)
         print(escaped_ticker)
         df = yf.download(escaped_ticker, start=start_date, end=end_date, auto_adjust=True)
+        row_count, column_count = df.shape
+        if row_count == 0:
+            return None
         df.index.name = 'Date'
-        print(df)
-        df.columns = ['Close', 'High', 'Low', 'Open', 'Volume']
-        print(df)
+        if column_count == 5:
+            df.columns = ['Close', 'High', 'Low', 'Open', 'Volume']
+        else:
+            df.columns = ['Adj Close', 'Close', 'High', 'Low', 'Open', 'Volume']
+            
         yahoo_response = df.to_dict()
         timestamps = list(yahoo_response["Open"].keys())
         timestamps = list(map(lambda timestamp: int(timestamp.timestamp()), timestamps))
@@ -296,6 +301,8 @@ def load_prices_from_yahoo(securities, info = {}):
         ticker = security["ticker"]
         r_start = time.time()
         ticker_data = get_yf_data(security, start_date, today)
+        if ticker_data is None:
+            continue
         # if not ticker in TICKER_INFO_DICT:
         #     load_ticker_info(ticker, TICKER_INFO_DICT)
         # ticker_data["industry"] = TICKER_INFO_DICT[ticker]["info"]["industry"]
