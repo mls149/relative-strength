@@ -30,6 +30,7 @@ jobs:
             run: |
               git clone https://mls149:${{ secrets.PAT }}@github.com/mls149/rs-log.git
               rm ./rs-log/output/* && cp -a ./output/. ./rs-log/output
+              ls ./rs-log/output
               cd rs-log
               git config user.name github-actions
               git config user.email github-actions@github.com
