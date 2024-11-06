@@ -97,11 +97,11 @@ def get_tickers_from_wikipedia(tickers):
     if cfg("NQ100"):
         tickers.update(get_securities('https://en.wikipedia.org/wiki/Nasdaq-100', ticker_pos=2, table_pos=1, universe="Nasdaq 100"))
     if cfg("SP500"):
-        tickers.update(get_securities('http://en.wikipedia.org/wiki/List_of_S%26P_500_companies', sector_offset=3, universe="S&P 500"))
+        tickers.update(get_securities('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies', ticker_pos=1, table_pos=1, sector_offset=3, universe="S&P 500"))
     if cfg("SP400"):
-        tickers.update(get_securities('https://en.wikipedia.org/wiki/List_of_S%26P_400_companies', 2, universe="S&P 400"))
+        tickers.update(get_securities('https://en.wikipedia.org/wiki/List_of_S%26P_400_companies', ticker_pos=1, table_pos=1, sector_offset=3, universe="S&P 400"))
     if cfg("SP600"):
-        tickers.update(get_securities('https://en.wikipedia.org/wiki/List_of_S%26P_600_companies', 2, universe="S&P 600"))
+        tickers.update(get_securities('https://en.wikipedia.org/wiki/List_of_S%26P_600_companies', ticker_pos=1, table_pos=1, sector_offset=3, universe="S&P 600"))
     return tickers
 
 def exchange_from_symbol(symbol):
