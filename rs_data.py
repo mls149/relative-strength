@@ -72,7 +72,7 @@ UNKNOWN = "unknown"
 def get_securities(url, ticker_pos = 1, table_pos = 1, sector_offset = 1, industry_offset = 1, universe = "N/A"):
     resp = requests.get(url)
     soup = bs.BeautifulSoup(resp.text, 'lxml')
-    table = soup.findAll('table', {'class': 'wikitable sortable'})[table_pos-1]
+    table = soup.findAll('table', {'id': 'constituents'})[table_pos-1]
     secs = {}
     for row in table.findAll('tr')[table_pos:]:
         sec = {}
