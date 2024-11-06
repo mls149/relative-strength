@@ -76,12 +76,12 @@ def get_securities(url, ticker_pos = 1, table_pos = 1, sector_offset = 1, indust
     secs = {}
     for row in table.findAll('tr')[table_pos:]:
         sec = {}
-        print(row.findAll('td'))
-        sec["ticker"] = row.findAll('td')[ticker_pos-1].text.strip()
-        sec["sector"] = row.findAll('td')[ticker_pos-1+sector_offset].text.strip()
-        sec["industry"] = row.findAll('td')[ticker_pos-1+sector_offset+industry_offset].text.strip()
-        sec["universe"] = universe
-        secs[sec["ticker"]] = sec
+        if len(row.findAll('td')) > 0:
+            sec["ticker"] = row.findAll('td')[ticker_pos-1].text.strip()
+            sec["sector"] = row.findAll('td')[ticker_pos-1+sector_offset].text.strip()
+            sec["industry"] = row.findAll('td')[ticker_pos-1+sector_offset+industry_offset].text.strip()
+            sec["universe"] = universe
+            secs[sec["ticker"]] = sec
     with open(os.path.join(DIR, "tmp", "tickers.pickle"), "wb") as f:
         pickle.dump(secs, f)
     return secs
